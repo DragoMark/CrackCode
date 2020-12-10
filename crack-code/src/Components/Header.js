@@ -3,7 +3,7 @@
 import React from 'react';
 import './Header.css';
 import logo from '../assets/logo1.png';
-import icon from '../assets/icon.png';
+// import icon from '../assets/icon.png';
 import SearchIcon from '@material-ui/icons/Search';
 import HomeIcon from '@material-ui/icons/Home';
 import FlagIcon from '@material-ui/icons/Flag';

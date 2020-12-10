@@ -1,5 +1,6 @@
 import React from 'react'
 import './Post.css'
+import firebase from 'firebase';
 import { Avatar } from '@material-ui/core'
 import ThumbUpIcon from '@material-ui/icons/ThumbUp';
 import ChatBubbleOutlineIcon from '@material-ui/icons/ChatBubbleOutline';
@@ -17,7 +18,7 @@ const Post = ({ profilePic, imgName, username, timestamp, message }) => {
                 />
                 <div className="post__topInfo">
                     <h3>{username}</h3>
-                    <p>{new Date(parseInt(timestamp)).toUTCString()}</p>
+                   <p>{new Date(timestamp?.toDate()).toUTCString()}</p>
                 </div>
             </div>
 
