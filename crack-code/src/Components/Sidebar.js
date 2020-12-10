@@ -1,3 +1,5 @@
+// change icons and names
+
 import React from 'react';
 import './Sidebar.css';
 import icon from '../assets/icon.png';
@@ -9,16 +11,14 @@ import ChatIcon from '@material-ui/icons/Chat';
 import StorefrontIcon from '@material-ui/icons/Storefront';
 import VideoLibraryIcon from '@material-ui/icons/VideoLibrary';
 import ExpandMoreOutlined from '@material-ui/icons/ExpandMoreOutlined';
-// import { useStateValue } from '../StateProvider';
+import { useStateValue } from '../StateProvider';
 
 
 const Sidebar = () => {
-    // const [{ user }, dispatch] = useStateValue()
+    const [{ user }, dispatch] = useStateValue()
     return (
         <div className='sidebar'>
-            {/* {<SicebarRow src={user.photoURL} title={user.displayName} />} */}
-            {/* <SidebarRow src={user.photoURL} title={user.displayName} /> */}
-            <SidebarRow src={icon} title='Crackheads' />
+            <SidebarRow src={user.photoURL} title={user.displayName}/>
             <SidebarRow Icon={LocalHospitalIcon} title='COVID-19 Info Center' />
             <SidebarRow Icon={EmojiFlagsIcon} title='Pages' />
             <SidebarRow Icon={PeopleIcon} title='Connections' />

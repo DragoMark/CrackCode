@@ -1,3 +1,5 @@
+//Header__center change the icons
+
 import React from 'react';
 import './Header.css';
 import logo from '../assets/logo1.png';
@@ -13,11 +15,11 @@ import AddIcon from '@material-ui/icons/Add';
 import ForumIcon from '@material-ui/icons/Forum';
 import NotificationsActiveIcon from '@material-ui/icons/NotificationsActive';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-// import { useStateValue } from '../StateProvider'
+import { useStateValue } from '../StateProvider'
 
 const Header = () => {
 
-    // const [{ user }, dispatch] = useStateValue()
+    const [{ user }, dispatch] = useStateValue();
 
     return (
         <div className = 'header'>
@@ -49,10 +51,8 @@ const Header = () => {
             </div>
             <div className="header__right">
                 <div className="header__info">
-                    <Avatar src={icon}/>
-                    <h4>Crackhead</h4>
-                    {/* <Avatar src={user.photoURL} />
-                    <h4>{user.displayName}</h4> */}
+                    <Avatar src={user.photoURL}/>
+                    <h4>{user.displayName}</h4>
                 </div>
 
                 <IconButton>

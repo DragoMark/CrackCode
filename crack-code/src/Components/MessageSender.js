@@ -5,11 +5,12 @@ import './MessageSender.css'
 import VideocamIcon from '@material-ui/icons/Videocam';
 import InsertEmoticonIcon from '@material-ui/icons/InsertEmoticon';
 import PhotoLibraryIcon from '@material-ui/icons/PhotoLibrary';
+import { useStateValue } from '../StateProvider';
 
 const MessageSender = () => {
     const [input, setInput ] = useState('');
     const [imageUrl, setImageUrl ] = useState('');
-
+    const [{ user }, dispatch] = useStateValue()
 
     // const handleChange = (e) => {
     //     if (e.target.files[0] ){
@@ -19,16 +20,15 @@ const MessageSender = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log("submitting shit");
     }
     return (
         <div className='messageSender'>
             <div className="messageSender__top">
-                <Avatar src={icon} />
+                <Avatar src={user.photoURL} />
                 <form>
                     <input 
                         type="text" 
-                        className='messageSender__input' placeholder={`brain damage`}
+                        className='messageSender__input' placeholder={`What is your query, ${user.displayName}?`}
                         value={input} 
                         onChange={(e) => setInput(e.target.value)}/>
 
@@ -67,16 +67,11 @@ const MessageSender = () => {
 export default MessageSender
 
 
-// import React, { useState } from 'react'
-// import './MessageSender.css'
+
 // import { Avatar, Input } from '@material-ui/core'
-// import VideocamIcon from '@material-ui/icons/Videocam'
-// import PhotoLibraryIcon from '@material-ui/icons/PhotoLibrary'
-// import InsertEmoticonIcon from '@material-ui/icons/InsertEmoticon'
 // import { useStateValue } from '../StateProvider'
 // import firebase from 'firebase'
 // import db from '../firebase'
-
 // import axios from '../axios'
 // import FormData from 'form-data'
 
