@@ -19,12 +19,11 @@ const Sidebar = () => {
     return (
         <div className='sidebar'>
             <SidebarRow src={user.photoURL} title={user.displayName}/>
-            <SidebarRow Icon={LocalHospitalIcon} title='COVID-19 Info Center' />
+            <SidebarRow Icon={LocalHospitalIcon} title='Help Center' />
             <SidebarRow Icon={EmojiFlagsIcon} title='Pages' />
             <SidebarRow Icon={PeopleIcon} title='Connections' />
-            <SidebarRow Icon={ChatIcon} title='Messenger' />
-            <SidebarRow Icon={StorefrontIcon} title='Buffer' />
-            <SidebarRow Icon={VideoLibraryIcon} title='Buffer' />
+            <SidebarRow Icon={ChatIcon} title='Chat' />
+            <SidebarRow Icon={VideoLibraryIcon} title='Streaming' />
             <SidebarRow Icon={ExpandMoreOutlined} title='More' />
         </div>
     )

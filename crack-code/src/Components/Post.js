@@ -18,7 +18,7 @@ const Post = ({ profilePic, imgName, username, timestamp, message }) => {
                 />
                 <div className="post__topInfo">
                     <h3>{username}</h3>
-                   <p>{new Date(timestamp?.toDate()).toUTCString()}</p>
+                   <p>{new Date(parseInt(timestamp)).toUTCString()}</p>
                 </div>
             </div>
 
@@ -26,24 +26,19 @@ const Post = ({ profilePic, imgName, username, timestamp, message }) => {
                 <p>{ message }</p>
             </div>
 
-            <div className="post__image">
-                <img src={imgName} alt=""/>
-                {/* {
+            {
                 imgName ? (
                     <div className="post__image">
-                        <img src={`/api/retrieve/images/single?name=${imgName}`} />
+                        <img src={`http://localhost:9000/retrieve/image/single?name=${imgName}`} />
                     </div>
                 ) : (
                         console.log('DEBUG >>> no image here')
                     )
-            } */}
-            </div>
-            
-
+            }
 
             <div className="post__options">
                 <div className="post__option">
-                    <ThumbUpIcon />
+                    <ThumbUpIcon/>
                     <p>Upvote</p>
                 </div>
                 <div className="post__option">

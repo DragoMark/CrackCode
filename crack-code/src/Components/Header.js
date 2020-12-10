@@ -40,12 +40,6 @@ const Header = () => {
                     <FlagIcon />
                 </div>
                 <div className="header__option header__option--active">
-                    <SubscriptionsOutlinedIcon />
-                </div>
-                <div className="header__option header__option--active">
-                    <StorefrontOutlinedIcon />
-                </div>
-                <div className="header__option header__option--active">
                     <SupervisedUserCircleIcon />
                 </div>
             </div>
@@ -58,17 +52,9 @@ const Header = () => {
                 <IconButton>
                     <AddIcon />     
                 </IconButton>
-
-                <IconButton>
-                    <ForumIcon />    
-                </IconButton>
-
+                
                 <IconButton>
                     <NotificationsActiveIcon />    
-                </IconButton>
-
-                <IconButton>
-                    <ExpandMoreIcon />     
                 </IconButton>
 
             </div>

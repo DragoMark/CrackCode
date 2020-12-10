@@ -2,38 +2,51 @@ import React, { useEffect, useState } from 'react'
 import './Feed.css'
 import MessageSender from './MessageSender'
 import Post from './Post'
-import StoryReel from './StoryReel'
-// import axios from '../axios'
-// import Pusher from 'pusher-js'
+import axios from '../axios'
+import Pusher from 'pusher-js'
 
-import db from '../firebase'
+const pusher = new Pusher('6216f3caed65d6ca8dea', {
+    cluster: 'ap2'
+});
 
 function Feed (){
-    // const [profilePic, setProfilePic] = useState('')
+    const [profilePic, setProfilePic] = useState('')
     const [postsData, setPostsData] = useState([])
 
+    const syncFeed = () => {
+        axios.get('/retrieve/posts')
+        .then((res) => {
+            console.log(res.data)
+            setPostsData(res.data)
+        })
+    }
+
     useEffect(() => {
-        db.collection("posts")
-        .orderBy('timestamp','desc')
-        .onSnapshot((snapshot) => 
-            setPostsData(snapshot.docs.map((doc) => ({ id: doc.id, data: doc.data() })))
-        )
-    }, [])
+        const channel = pusher.subscribe('posts');
+        channel.bind('inserted', function(data) {
+            syncFeed();
+        });
+    },[])
+
+
+    useEffect(() => {
+        syncFeed()
+    },[])
 
     return (
         <div className='feed' >
-            {/* <StoryReel /> */}
             <MessageSender />
 
-            {postsData.map((entry) => (
-                <Post
-                    profilePic={entry.data.profilePic}
-                    message={entry.data.message}
-                    timestamp={entry.data.timestamp}
-                    imgName={entry.data.imgName}
-                    username={entry.data.username}
-                />
-                ))
+            {   
+                postsData.map((entry) => (
+                    <Post
+                        profilePic={entry.avatar}
+                        message={entry.text}
+                        timestamp={entry.timestamp}
+                        imgName={entry.imgName}
+                        username={entry.user}
+                    />
+                ))    
             }
         </div>
     )
